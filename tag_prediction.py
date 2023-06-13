@@ -3,7 +3,7 @@ import pickle
 
 from sklearn.preprocessing import MultiLabelBinarizer, MaxAbsScaler
 from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.naive_bayes import XGBClassifier
+from xgboost import XGBClassifier
 
 with open('multilabel_tag_binerizer.pkl', 'rb') as file:
     tag_label = pickle.load(file)
