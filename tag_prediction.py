@@ -6,13 +6,11 @@ from sklearn.preprocessing import MultiLabelBinarizer, MaxAbsScaler
 from sklearn.feature_extraction.text import CountVectorizer
 from xgboost import XGBClassifier
 
-with open('multilabel_tag_binerizer.pkl', 'rb') as file:
-    tag_label = pickle.load(file)
+tag_label = joblib.load("multilabel_tag_binerizer.pkl")
     
 scaler = joblib.load("MaxAbsScaler.pkl")
     
-with open('Fitted_countvectorizer.pkl', 'rb') as file:
-    vectorizer = pickle.load(file)
+vectorizer = joblib.load("Fitted_countvectorizer.pkl")
     
 classifier = joblib.load("XGBClassifierPredictor.pkl")
 
