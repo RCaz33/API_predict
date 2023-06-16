@@ -30,8 +30,9 @@ def main():
         st.text(tokens_ready)
         tag_predicted, proba = predict_tag(tokens_ready)
         
-        st.subheader("Sugested tag is/are:")
-        st.success(tag_predicted, round(100*proba))
+        st.subheader("Top 3 sugested tag and associated confidence percentage are:")
+        for i in [0,1,2]:
+            st.success((tag_predicted[i], proba[i]))
 
     
 

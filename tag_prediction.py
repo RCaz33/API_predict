@@ -19,16 +19,17 @@ classifier = joblib.load("XGBClassifierPredictor.pkl")
 
 
 def predict_tag(text):
-    X_new = vectorizer.transform(text)
+    X_new = vectorizer.transform([text])
     X_new = scaler.transform(X_new)
-    Tag_predict = classifier.predict(X_new)
     Tag_proba = classifier.predict_proba(X_new)
-    
-    prob_ = []
-    for i, probability in enumerate(Tag_proba[0]):
-        if probability > 0.5:
-            prob_.append(probability)
 
-    tags = multilabel.inverse_transform(y_pred)[0]
+    tags = tag_label.classes_
+    top_values = sorted(enumerate(Tag_proba[0]), key=lambda x: x[1], reverse=True)[:3]
     
-    return tags, prob_
+    tag_predict=[]
+    tag_proba=[]
+    for index, value in top_values:
+        tag_predict.append(tags[index])
+        tag_proba.append(round(value*100))
+    
+    return tag_predict, tag_proba
