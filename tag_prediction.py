@@ -6,17 +6,12 @@ from sklearn.preprocessing import MultiLabelBinarizer, MaxAbsScaler
 from sklearn.feature_extraction.text import CountVectorizer
 from xgboost import XGBClassifier
 
-tag_label = joblib.load("multilabel_tag_binerizer.pkl")
-    
-scaler = joblib.load("MaxAbsScaler.pkl")
-    
 vectorizer = joblib.load("Fitted_countvectorizer.pkl")
-    
+scaler = joblib.load("MaxAbsScaler.pkl")
 classifier = joblib.load("XGBClassifierPredictor.pkl")
+tag_label = joblib.load("multilabel_tag_binerizer.pkl")
 
 # Now we use the loaded vectorizer for transforming new text data
-
-
 
 def predict_tag(text):
     X_new = vectorizer.transform([text])

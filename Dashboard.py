@@ -6,6 +6,7 @@ import subprocess
 
 ### install dependencies
 with st.spinner('Installing dependencies...'):
+    subprocess.run(["streamlit", "cache", "clear"])
     time.sleep(0.05)
     subprocess.check_call(["pip", "install", "-r", "requirements.txt"])
 st.success("Dependencies installed successfully!")
