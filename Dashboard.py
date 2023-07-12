@@ -4,15 +4,8 @@ import pandas as pd
 import time
 import subprocess
 
-### install dependencies
-
-
-
-### load processing functions
 from text_pre_processing import clean_text, make_tokens
 from tag_prediction import predict_tag
-
-
 
 def main():
     st.title("Text Processing API")
