@@ -1,11 +1,24 @@
 import streamlit as st
-import requests
-import pandas as pd
 import time
 import subprocess
 
-from text_pre_processing import clean_text, make_tokens
-from tag_prediction import predict_tag
+
+st.text("This app takes your text as an input and propose tags for your message\n\
+        The tag attributiuon was trained on stackoverflow questions in March2023\n\n\
+        type a sentence or copy paste this exmaple: \n\
+        'I want to integrate java script in python notebook to display dynamic images'\n")
+
+# with st.spinner('Installing dependencies...'):
+#     subprocess.run(["streamlit", "cache", "clear"])
+#     time.sleep(0.05)
+#     subprocess.check_call(["python3", "-m", "pip", "install", "-r", "requirements.txt"])
+#     st.success("Dependencies installed successfully!")
+
+import requests
+import pandas as pd
+
+from utils.text_pre_processing import clean_text, make_tokens
+from utils.tag_prediction import predict_tag
 
 def main():
     st.title("Text Processing API")
@@ -14,11 +27,7 @@ def main():
 
     if st.button("Process Text"):
     
-        with st.spinner('Installing dependencies...'):
-            subprocess.run(["streamlit", "cache", "clear"])
-            time.sleep(0.05)
-            subprocess.check_call(["pip", "install", "-r", "requirements.txt"])
-            st.success("Dependencies installed successfully!")
+
             
         text_ready = clean_text(text)
         tokens_ready = make_tokens(text_ready)
