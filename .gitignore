@@ -6,3 +6,6 @@ __pycache__/
 .DS_Store
 # ignore the database used to train the algorithm
 Cleaned_SOF_OCP_P5(2).csv
+
+
+utils/__pycache__/
